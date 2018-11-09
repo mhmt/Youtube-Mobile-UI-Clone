@@ -136,7 +136,7 @@ export default class Home extends Component {
 
             if(item.type == 4)
             return(
-              <Topics data={item.data} style={{borderColor: Color.BackgroundDark,borderBottomWidth: 1}} title="Size özel konular"/>
+              <Topics data={item.data} style={{borderColor: Color.BackgroundDark,borderBottomWidth: 1}} title="Size Özel Konular"/>
             )
           }}
           />

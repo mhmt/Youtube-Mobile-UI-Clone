@@ -48,10 +48,10 @@ class Topics extends Component {
                  dataArray={this.props.data}
                  renderRow={(item)=>{
                     return(
-                    <ListItem noBorder noIndent style={{width: 90}}>
-                      <TouchableOpacity style={{height:120,width:80,borderRadius:20,margin:5,padding:10,justifyContent:'center',alignItems:'center'}} >
-                        <View style={{ height:120,width:80,backgroundColor:this.getRandomColor(),borderRadius:10}}>
-                          <Image style={{height:60,width:80,borderRadius:5}} source={item.image}/>
+                    <ListItem noBorder noIndent style={{width: 110}}>
+                      <TouchableOpacity style={{height:125,width:90,borderRadius:20,margin:5,padding:10,justifyContent:'center',alignItems:'center'}} >
+                        <View style={{ height:125,width:90,backgroundColor:this.getRandomColor(),borderRadius:10}}>
+                          <Image style={{height:60,width:90,borderRadius:5}} source={item.image}/>
                           <Text style={{color:'white',alignSelf:'center',alignItems:'center',justifyContent:'center',marginTop:20}}>{item.text}</Text>
                         </View>
                       </TouchableOpacity>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text,Image ,Platform} from 'react-native';
-import { Header, Left,  Right } from 'native-base';
+import { Header, Left,  Right , Button,Input,Item,Icon} from 'native-base';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Color from './Color';
@@ -9,7 +9,8 @@ class HeaderComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        isFontLoaded:false
+        isFontLoaded:false,
+        searchActivated:false
     };
   }
 
@@ -20,8 +21,10 @@ class HeaderComponent extends Component {
       this.setState({isFontLoaded :true});
     });
   }
-  render() {
-    return (
+
+
+  getNormalHeader(){
+    return(
     <Header iosBarStyle='light-content' style={{borderBottomColor:Color.BackgroundDark,borderBottomWidth:0.5,backgroundColor:Color.Background}}>
         <Left style={{flexDirection:'row',alignItems:'center',alignContent:'center',marginLeft:5}}>
             <Ionicons name="logo-youtube" size={30} color="red" />
@@ -31,10 +34,30 @@ class HeaderComponent extends Component {
 
             <TouchableOpacity><MaterialIcons name='cast-connected' size={25} color='white' style={{marginHorizontal: 8}}/></TouchableOpacity>
             <TouchableOpacity><Ionicons name ="md-videocam" size={25} color='white' style={{marginHorizontal: 8}}/></TouchableOpacity>
-            <TouchableOpacity><Ionicons name ="ios-search" size={25} color='white' style={{marginHorizontal: 8}}/></TouchableOpacity>
+            <TouchableOpacity onPress={()=> this.setState({searchActivated:true})}><Ionicons name ="ios-search" size={25} color='white' style={{marginHorizontal: 8}}/></TouchableOpacity>
             <TouchableOpacity><Image style={{marginHorizontal: 8,borderRadius: 13,width:26,height:26}} source={{uri:this.props.img}}/></TouchableOpacity>
         </Right>
     </Header>
+    )
+  }
+
+  getSearchHeader(){
+    return(
+      <Header searchBar rounded iosBarStyle='light-content' style={{borderBottomColor:Color.BackgroundDark,borderBottomWidth:0.5,backgroundColor:Color.Background,justifyContent:'center',alignItems:'center'}}>
+        <Ionicons name={Platform.OS === "ios" ? "ios-arrow-back":"md-arrow-back"} size={25} color="white"/> 
+        <Input style={{width:200, marginHorizontal:10,color:'white' }}  placeholder="Arama" />
+        <Button transparent onPress={()=> this.setState({searchActivated:false})}>
+          <Ionicons name={Platform.OS === "ios" ? "ios-close-circle-outline":"md-close"} size={25} color="white" /> 
+
+        </Button>
+      
+      </Header>
+      )
+  }
+
+  render() {
+    return (
+      (this.state.searchActivated) ? this.getSearchHeader(): this.getNormalHeader()
     );
   }
 }
