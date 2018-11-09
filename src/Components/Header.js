@@ -44,8 +44,9 @@ class HeaderComponent extends Component {
   getSearchHeader(){
     return(
       <Header searchBar rounded iosBarStyle='light-content' style={{borderBottomColor:Color.BackgroundDark,borderBottomWidth:0.5,backgroundColor:Color.Background,justifyContent:'center',alignItems:'center'}}>
-        <Ionicons name={Platform.OS === "ios" ? "ios-arrow-back":"md-arrow-back"} size={25} color="white"/> 
-        <Input style={{width:200, marginHorizontal:10,color:'white' }}  placeholder="Arama" />
+        <TouchableOpacity onPress={()=> {return this.setState({searchActivated:false})}}
+            style={{marginHorizontal:10}}><Ionicons name={Platform.OS === "ios" ? "ios-arrow-back":"md-arrow-back"} size={25} color="white"/></TouchableOpacity>
+        <Input style={{width:180, marginHorizontal:10,color:'white' }}  placeholder="Arama..." />
         <Button transparent onPress={()=> this.setState({searchActivated:false})}>
           <Ionicons name={Platform.OS === "ios" ? "ios-close-circle-outline":"md-close"} size={25} color="white" /> 
 
