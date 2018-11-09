@@ -10,6 +10,10 @@ import PostTextImg from '../Components/PostTextImg';
 import PostText from '../Components/PostText'
 import PostVideo from '../Components/PostVideo'
 import Stories from '../Components/Stories';
+import Topics from '../Components/Topics'
+import Images from '../Components/Image';
+
+
 export default class Home extends Component {
   state={
     isFontLoaded:false,
@@ -28,7 +32,7 @@ export default class Home extends Component {
           }
       },
       {
-          type:3,
+          type:3,  // Hikaye Post
           data:[
             {
               img:"https://yt3.ggpht.com/a-/AN66SAwnOfQRfhrH-lqzYZqnUAsBb_cGOGWJ-4CzPQ=s288-mo-c-c0xffffffff-rj-k-no",
@@ -69,45 +73,29 @@ export default class Home extends Component {
           }
       },
       {
-          type:2, // Video Post
-          data:{
-              id:"Sprjka3noIE",
-              thumbnail:"https://i.ytimg.com/vi/Sprjka3noIE/maxresdefault.jpg",
-              profileImg:"https://yt3.ggpht.com/a-/AN66SAwpcoAvLiVkBxmdWFGFFAEBVi47tuDesum_lg=s288-mo-c-c0xffffffff-rj-k-no",
-              title:"Cobra CX112 Walkie-Talkie Telsiz İncelemesi",
-              channelName: "TeknoSeyir",
-              views:"5 B görüntüleme",
-              seen:true,
-              time: '17 saat önce',
-              duration:"13:48"
+        type:4,   // Konular Post
+        data:[
+          {
+            image:Images.electronics,
+            text:"Elektronik"
+          },
+          {
+            image:Images.iphone,
+            text:"iPhone"
+          },
+          {
+            image:Images.metallica,
+            text:"Metallica"
+          },
+          {
+            image:Images.trains,
+            text:"Trenler"
+          },
+          {
+            image:Images.travel,
+            text:"Seyehat"
           }
-      },
-      {
-          type:1, // Fotoğraflı Yazı Post
-          data:{
-              profileImg:"https://yt3.ggpht.com/a-/AN66SAwpcoAvLiVkBxmdWFGFFAEBVi47tuDesum_lg=s288-mo-c-c0xffffffff-rj-k-no",
-              text: "Açıklama : Timuçin Esen VS Müslüm Gürses VS Bülent Ersoy Ses Analizi videosu'nun kaldırılma sebebi Netd Müzik'in yayınlandıktan kısa süre sonra videoyu dünya genelinde engellemesi sebebi iledir. Yanlış anlamalar olduğu için açıklama gereği hissettim. Bu tarz açıklayıcı , öğretici videoların teliflenmesini bir türlü anlayamasamda yapacak birşey yok. Saygılarımla",
-              photo: "https://i.ytimg.com/vi/Sprjka3noIE/maxresdefault.jpg",
-              channelName:"TeknoSeyir",
-              time:"5 saat önce",
-              likes:480,
-              dislikes:42,
-              comments:30
-          }
-      },
-      {
-          type:2, // Video Post
-          data:{
-              id:"Sprjka3noIE",
-              thumbnail:"https://i.ytimg.com/vi/Sprjka3noIE/maxresdefault.jpg",
-              profileImg:"https://yt3.ggpht.com/a-/AN66SAwpcoAvLiVkBxmdWFGFFAEBVi47tuDesum_lg=s288-mo-c-c0xffffffff-rj-k-no",
-              title:"Cobra CX112 Walkie-Talkie Telsiz İncelemesi",
-              channelName: "TeknoSeyir",
-              views:"5 B görüntüleme",
-              seen:true,
-              time: '17 saat önce',
-              duration:"13:48"
-          }
+        ]
       }
     ]
   }
@@ -144,6 +132,11 @@ export default class Home extends Component {
             if(item.type == 3)
             return(
               <Stories data={item.data} style={{borderColor: Color.BackgroundDark,borderBottomWidth: 1}} title="Tüm Hikayeler"/>
+            )
+
+            if(item.type == 4)
+            return(
+              <Topics data={item.data} style={{borderColor: Color.BackgroundDark,borderBottomWidth: 1}} title="Size özel konular"/>
             )
           }}
           />
