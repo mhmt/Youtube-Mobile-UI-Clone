@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Color from './Color';
-import { TouchableOpacity, Text,Image ,View} from 'react-native';
+import { TouchableOpacity, Text,ImageBackground ,View} from 'react-native';
 import { List,ListItem} from 'native-base';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-class Topics extends Component {
+class LastWatched extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,11 +48,19 @@ class Topics extends Component {
                  dataArray={this.props.data}
                  renderRow={(item)=>{
                     return(
-                    <ListItem noBorder noIndent style={{width: 110}}>
-                      <TouchableOpacity style={{height:125,width:90,borderRadius:20,margin:5,padding:10,justifyContent:'center',alignItems:'center'}} >
-                        <View style={{ height:125,width:90,backgroundColor:this.getRandomColor(),borderRadius:10}}>
-                          <Image style={{height:60,width:90,borderRadius:5}} source={item.image}/>
-                          <Text style={{color:'white',alignSelf:'center',alignItems:'center',justifyContent:'center',marginTop:20}}>{item.text}</Text>
+                    <ListItem noBorder noIndent style={{width: 160}}>
+                      <TouchableOpacity style={{height:160,width:160,justifyContent:'flex-start',alignItems:'center'}} >
+                        <View style={{borderBottomColor:'red',borderBottomWidth:2}}>
+                          <ImageBackground source={{uri:item.thumbnail}} style={{height:100,width:140, justifyContent:'flex-end',alignItems:'flex-end'}}>
+                              <Text style={{ backgroundColor:'black',opacity:0.8, color:'white',margin:5,paddingHorizontal:5,paddingVertical:2,fontSize:10}}>{item.length}</Text>
+                          </ImageBackground>
+                        </View>
+                        <View style={{flexDirection:'row'}}>
+                          <View style={{marginTop:3, width:110}}>
+                              <Text style={{color:'white'}}>{item.title.slice(0,32)}..</Text>
+                              <Text style={{color: Color.TintColor,marginTop:3}}>{item.channelName}</Text>
+                          </View>
+                          <Ionicons name="md-more" size={15} color={Color.TintColor} style={{alignSelf: 'flex-start',marginTop:5,marginRight:5}}/>
                         </View>
                       </TouchableOpacity>
                     </ListItem>
@@ -70,4 +78,4 @@ class Topics extends Component {
   }
 }
 
-export default Topics;
+export default LastWatched;

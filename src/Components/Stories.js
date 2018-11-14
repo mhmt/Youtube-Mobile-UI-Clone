@@ -25,23 +25,24 @@ class Stories extends Component {
 
   render() {
     return (
-        <View>
+        <View style={this.props.style}>
             {
                 (typeof this.props.title !== 'undefined') ? 
                 <Text style={{color:'white',marginLeft:10}}>{this.props.title}</Text>:null
             }
 
-            <View style={[{flexDirection:'row'},(this.props.style)]}>
+            <View style={[{flexDirection:'row'}]}>
                  
                  <List horizontal style={{flex:0.8}}
                  showsHorizontalScrollIndicator={false}
                  dataArray={this.props.data}
                  renderRow={(item)=>
-                   <ListItem noBorder noIndent style={{width: (item.seen)? 70:80,marginTop: (item.seen)? 5:0}}>
-                      <TouchableOpacity style={{height:this.height(item.seen),width:this.width(item.seen),borderRadius:this.radius(item.seen), borderColor:'red',margin:5,borderWidth:item.seen ? 0:2,padding:item.seen ? 0:10,justifyContent:'center',alignItems:'center'}} >
+                   <ListItem noBorder noIndent style={{width: (item.seen)? 70:80,marginTop: (item.seen)? 5:0,flexDirection:'column'}}>
+                       <TouchableOpacity style={{height:this.height(item.seen),width:this.width(item.seen),borderRadius:this.radius(item.seen), borderColor:'red',margin:5,borderWidth:item.seen ? 0:2,padding:item.seen ? 0:10,justifyContent:'center',alignItems:'center'}} >
                        <Image style={{height:50,width:50,borderRadius:25, borderColor:'transparent'}} 
                            source={{uri:item.img}}/>
                        </TouchableOpacity>
+                       <Text style={{width:70,textAlign:'center',color:'white'}}>{item.channelName}</Text>
                    </ListItem>
                  }
                  />

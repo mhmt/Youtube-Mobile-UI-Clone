@@ -6,6 +6,7 @@ import Subscriptions from "../Screens/Subscriptions";
 import { Icon } from "native-base";
 import { Ionicons,Octicons,MaterialIcons } from '@expo/vector-icons';
 import Color from "../Components/Color";
+import Library  from "../Screens/Library";
 
 
 
@@ -39,7 +40,7 @@ export default  Tab = createBottomTabNavigator({
         }
     },
     Kitaplik: {
-        screen: Home,
+        screen: Library,
         navigationOptions: {
             title:"Kitaplık",
             tabBarIcon: ({ tintColor }) => <Octicons size={25} color={tintColor}  name="file-directory"/>

@@ -1,9 +1,9 @@
-import React from 'react';
+import React ,{Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Root } from 'native-base';
 import MainTabNavigator from './src/Navigation/MainTabNavigator';
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     console.disableYellowBox = true;
     

@@ -22,7 +22,6 @@ class HeaderComponent extends Component {
     });
   }
 
-
   getNormalHeader(){
     return(
     <Header iosBarStyle='light-content' style={{borderBottomColor:Color.BackgroundDark,borderBottomWidth:0.5,backgroundColor:Color.Background}}>
@@ -46,7 +45,7 @@ class HeaderComponent extends Component {
       <Header searchBar rounded iosBarStyle='light-content' style={{borderBottomColor:Color.BackgroundDark,borderBottomWidth:0.5,backgroundColor:Color.Background,justifyContent:'center',alignItems:'center'}}>
         <TouchableOpacity onPress={()=> {return this.setState({searchActivated:false})}}
             style={{marginHorizontal:10}}><Ionicons name={Platform.OS === "ios" ? "ios-arrow-back":"md-arrow-back"} size={25} color="white"/></TouchableOpacity>
-        <Input style={{width:180, marginHorizontal:10,color:'white' }}  placeholder="Arama..." />
+        <Input style={{width:180, marginHorizontal:10,color:'white' }}  placeholder="YouTube'da ara" />
         <Button transparent onPress={()=> this.setState({searchActivated:false})}>
           <Ionicons name={Platform.OS === "ios" ? "ios-close-circle-outline":"md-close"} size={25} color="white" /> 
 

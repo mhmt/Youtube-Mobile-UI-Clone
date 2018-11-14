@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text ,Image} from 'react-native';
+import { View, Text ,Image,TouchableOpacity} from 'react-native';
 import Color from './Color';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -12,7 +12,9 @@ class PostTextImg extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       deviceWidth : Dimensions.get('window').width
+       deviceWidth : Dimensions.get('window').width,
+       showFull:false
+
     };
   }
   
@@ -33,13 +35,28 @@ class PostTextImg extends Component {
     }
   */
 
+  renderText(){
+      if(this.state.showFull) return( <Text style={{color:'white',width:'100%'}}>{this.props.item.text}</Text>);
+      else{
+          return(
+            <View>
+            <Text style={{color:'white',width:'100%'}}>{this.props.item.text.slice(0,100)}..</Text>
+            <TouchableOpacity onPress={()=> this.setState({showFull:true})}>
+                  <Text style={{color:Color.TintColor}}> Devamını Oku </Text>
+            </TouchableOpacity>
+            </View>
+          )
+        
+      }
+  }
+
   render() {
     return (
     <View style={{justifyContent: 'center',borderColor:Color.BackgroundDark,borderBottomWidth:1,marginVertical:5}}>
         <View style={{flexDirection:'row',padding:10}}>
             <Image style={{width:50,height:50,borderRadius:25}} source={{uri: this.props.item.profileImg}} />
             <View style={{marginLeft:5,padding:5,width:(this.state.deviceWidth-50-20)}}>
-                <Text style={{color:'white',width:'100%'}}>{this.props.item.text}</Text>
+                { this.renderText()}
                 <Text style={{color: Color.TintColor,marginTop:3}}>{this.props.item.channelName} · {this.props.item.time}</Text>
             </View>
         </View>

@@ -12,92 +12,14 @@ import PostVideo from '../Components/PostVideo'
 import Stories from '../Components/Stories';
 import Topics from '../Components/Topics'
 import Images from '../Components/Image';
-
+import Data from '../Components/Data';
+import LastWatched from '../Components/LastWatched'
 
 export default class Home extends Component {
   state={
     isFontLoaded:false,
     profile: "https://yt3.ggpht.com/a-/AN66SAwpcoAvLiVkBxmdWFGFFAEBVi47tuDesum_lg=s288-mo-c-c0xffffffff-rj-k-no",
-    posts:[
-      {
-          type:0, // Sadece Yazı Post
-          data:{
-              profileImg:"https://yt3.ggpht.com/-hd_XjkPVH5U/AAAAAAAAAAI/AAAAAAAAAAA/1Vhlf_0Ner0/s76-c-k-no-mo-rj-c0xffffff",
-              text: "Edemedim. :) Çok uzun video oldu. Yardırıyorum, yardırıyorum.﻿",
-              channelName:"Karınca Çiftliğim",
-              time:"14 saat önce",
-              likes:87,
-              dislikes:3,
-              comments:12
-          }
-      },
-      {
-          type:3,  // Hikaye Post
-          data:[
-            {
-              img:"https://yt3.ggpht.com/a-/AN66SAwnOfQRfhrH-lqzYZqnUAsBb_cGOGWJ-4CzPQ=s288-mo-c-c0xffffffff-rj-k-no",
-              seen: false
-            },
-            {
-              img:"https://yt3.ggpht.com/a-/AN66SAxrJ4HDUDpnoBz7NHbPOlA0DMh8B0kF7r1Y8Q=s288-mo-c-c0xffffffff-rj-k-no",
-              seen: false
-            },
-            {
-              img:"https://yt3.ggpht.com/a-/AN66SAwpcoAvLiVkBxmdWFGFFAEBVi47tuDesum_lg=s288-mo-c-c0xffffffff-rj-k-no",
-              seen: true
-            },
-            {
-              img:"https://yt3.ggpht.com/-hd_XjkPVH5U/AAAAAAAAAAI/AAAAAAAAAAA/1Vhlf_0Ner0/s76-c-k-no-mo-rj-c0xffffff",
-              seen: true
-            },
-            {
-              img:"https://yt3.ggpht.com/a-/AN66SAwnOfQRfhrH-lqzYZqnUAsBb_cGOGWJ-4CzPQ=s288-mo-c-c0xffffffff-rj-k-no",
-              seen: true
-            },
-            {
-              img:"https://yt3.ggpht.com/a-/AN66SAwnOfQRfhrH-lqzYZqnUAsBb_cGOGWJ-4CzPQ=s288-mo-c-c0xffffffff-rj-k-no",
-              seen: true
-            }]
-      },
-      {
-          type:1, // Fotoğraflı Yazı Post
-          data:{
-              profileImg:"https://yt3.ggpht.com/a-/AN66SAwpcoAvLiVkBxmdWFGFFAEBVi47tuDesum_lg=s288-mo-c-c0xffffffff-rj-k-no",
-              text: "Açıklama : Timuçin Esen VS Müslüm Gürses VS Bülent Ersoy Ses Analizi videosu'nun kaldırılma sebebi Netd Müzik'in yayınlandıktan kısa süre sonra videoyu dünya genelinde engellemesi sebebi iledir. Yanlış anlamalar olduğu için açıklama gereği hissettim. Bu tarz açıklayıcı , öğretici videoların teliflenmesini bir türlü anlayamasamda yapacak birşey yok. Saygılarımla",
-              photo: "https://i.ytimg.com/vi/Sprjka3noIE/maxresdefault.jpg",
-              channelName:"TeknoSeyir",
-              time:"5 saat önce",
-              likes:480,
-              dislikes:42,
-              comments:30
-          }
-      },
-      {
-        type:4,   // Konular Post
-        data:[
-          {
-            image:Images.electronics,
-            text:"Elektronik"
-          },
-          {
-            image:Images.iphone,
-            text:"iPhone"
-          },
-          {
-            image:Images.metallica,
-            text:"Metallica"
-          },
-          {
-            image:Images.trains,
-            text:"Trenler"
-          },
-          {
-            image:Images.travel,
-            text:"Seyehat"
-          }
-        ]
-      }
-    ]
+    posts:Data.posts
   }
 
   componentDidMount() {
@@ -112,6 +34,9 @@ export default class Home extends Component {
       <Container style={{backgroundColor:Color.Background}}>
         <HeaderComponent img={this.state.profile}/>
         <Content>
+          
+     
+
           <List dataArray={this.state.posts} 
           renderRow={(item)=>{
             if(item.type == 0)
@@ -126,12 +51,12 @@ export default class Home extends Component {
 
             if(item.type == 2)
             return(
-              <PostVideo  item={item.data} />
+              <PostVideo  item={item.data} style={{borderBottomColor: Color.BackgroundDark,borderBottomWidth: 1}} />
             )
 
             if(item.type == 3)
             return(
-              <Stories data={item.data} style={{borderColor: Color.BackgroundDark,borderBottomWidth: 1}} title="Tüm Hikayeler"/>
+              <Stories data={Data.stories} style={{borderColor: Color.BackgroundDark,borderBottomWidth: 1}} title="Tüm Hikayeler"/>
             )
 
             if(item.type == 4)

@@ -33,17 +33,17 @@ class PostTextImg extends Component {
 
   render() {
     return (
-    <View style={{justifyContent: 'center',borderColor:Color.BackgroundDark,borderBottomWidth:1,marginVertical:5}}>
+    <View style={[{justifyContent: 'center',marginVertical:5},this.props.style]}>
 
        <ImageBackground source={{uri:this.props.item.thumbnail}} style={{height:260,width:100+'%', justifyContent:'flex-end',alignItems:'flex-end'}}>
-            <Text style={{backgroundColor:Color.BackgroundDark,opacity:0.9, color:'white',margin:10,paddingHorizontal:5,paddingVertical:2}}>{this.props.item.duration}</Text>
+            <Text style={{backgroundColor:'black',opacity:0.8, color:'white',margin:10,paddingHorizontal:5,paddingVertical:2}}>{this.props.item.length}</Text>
         </ImageBackground>
 
         <View style={{flexDirection:'row',padding:10}}>
-            <Image style={{width:50,height:50,borderRadius:25}} source={{uri: this.props.item.profileImg}} />
+    {/*<Image style={{width:50,height:50,borderRadius:25}} source={{uri: this.props.item.profileImg}} />*/}
             <View style={{marginLeft:5,padding:5,width:(this.state.deviceWidth-50-30)}}>
                 <Text style={{color:'white',width:'100%'}}>{this.props.item.title}</Text>
-                <Text style={{color: Color.TintColor,marginTop:3}}>{this.props.item.channelName} · {this.props.item.views} · {this.props.item.time}</Text>
+                <Text style={{color: Color.TintColor,marginTop:3}}>{this.props.item.channelName} · {this.props.item.meta} </Text>
             </View>
             <Ionicons name="md-more" size={30} color={Color.TintColor} style={{alignSelf: 'flex-start',marginTop:5,marginRight:5}}/>
 
