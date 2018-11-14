@@ -6,6 +6,7 @@ export default {
     travel: require('../../assets/travel.png'),
     electronics: require('../../assets/electronics.png'),
     like: require('../../assets/like.png'),
-    later: require('../../assets/later.png')
+    later: require('../../assets/later.png'),
+    bg: require('../../assets/bg.png')
 
 }

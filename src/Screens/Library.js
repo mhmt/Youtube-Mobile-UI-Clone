@@ -8,8 +8,10 @@ import Data from '../Components/Data';
 import LastWatched from '../Components/LastWatched'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Entypo from '@expo/vector-icons/Entypo';
-import RNPickerSelect from 'react-native-picker-select';
 import Playlist from '../Components/Playlist'
+import { Dropdown } from 'react-native-material-dropdown';
+
+
 export class Library extends Component {
     state={
         isFontLoaded:false,
@@ -33,11 +35,14 @@ export class Library extends Component {
         }).then(()=>{
           this.setState({isFontLoaded :true});
         });
-      }
+        
+    }
+
+    
     render() {
         return (
             <Container style={{backgroundColor:Color.Background}}>
-                <HeaderComponent img={this.state.profile}/>
+                <HeaderComponent img={this.state.profile}  navigation={this.props.navigation}/>
                 <Content>
                     <LastWatched data={Data.mVideos} title="Son İzlenenler" style={{marginTop:10}}/>
 
@@ -65,7 +70,20 @@ export class Library extends Component {
                     </View>
 
                     <View style={{padding:15}}>
-                        
+                        <Dropdown 
+                            baseColor={Color.BorderColor}
+                            textColor={Color.BorderColor}
+                            dropdownOffset={{top:10}}
+                            containerStyle={{width:300}}
+                            value="Oynatma Listeleri (Yeni Video Eklenenler)"
+                            data={[{
+                               value:"Oynatma Listeleri (Yeni Video Eklenenler)"
+                            },
+                            {
+                                value:"Oynatma Listeleri (A'dan Z'ye)"
+                            }]}
+                        />
+
                         <Playlist data={Data.playlists[0]}/> 
                         <Playlist data={Data.playlists[1]}/> 
                         <Playlist data={Data.playlists[2]}/> 

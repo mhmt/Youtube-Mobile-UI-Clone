@@ -34,7 +34,7 @@ class HeaderComponent extends Component {
             <TouchableOpacity><MaterialIcons name='cast-connected' size={25} color='white' style={{marginHorizontal: 8}}/></TouchableOpacity>
             <TouchableOpacity><Ionicons name ="md-videocam" size={25} color='white' style={{marginHorizontal: 8}}/></TouchableOpacity>
             <TouchableOpacity onPress={()=> this.setState({searchActivated:true})}><Ionicons name ="ios-search" size={25} color='white' style={{marginHorizontal: 8}}/></TouchableOpacity>
-            <TouchableOpacity><Image style={{marginHorizontal: 8,borderRadius: 13,width:26,height:26}} source={{uri:this.props.img}}/></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{ if(typeof this.props.navigation !== 'undefined') this.props.navigation.navigate("Account")}}><Image style={{marginHorizontal: 8,borderRadius: 13,width:26,height:26}} source={{uri:this.props.img}}/></TouchableOpacity>
         </Right>
     </Header>
     )
@@ -46,9 +46,8 @@ class HeaderComponent extends Component {
         <TouchableOpacity onPress={()=> {return this.setState({searchActivated:false})}}
             style={{marginHorizontal:10}}><Ionicons name={Platform.OS === "ios" ? "ios-arrow-back":"md-arrow-back"} size={25} color="white"/></TouchableOpacity>
         <Input style={{width:180, marginHorizontal:10,color:'white' }}  placeholder="YouTube'da ara" />
-        <Button transparent onPress={()=> this.setState({searchActivated:false})}>
-          <Ionicons name={Platform.OS === "ios" ? "ios-close-circle-outline":"md-close"} size={25} color="white" /> 
-
+        <Button transparent onPress={()=> null}>
+          <MaterialIcons name={"keyboard-voice"} size={25} color="white" /> 
         </Button>
       
       </Header>

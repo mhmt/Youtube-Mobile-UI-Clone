@@ -32,7 +32,7 @@ export default class Home extends Component {
   render() {
     return (
       <Container style={{backgroundColor:Color.Background}}>
-        <HeaderComponent img={this.state.profile}/>
+        <HeaderComponent img={this.state.profile} navigation={this.props.navigation}/>
         <Content>
           
      

@@ -24,7 +24,7 @@ export default class Subscriptions extends Component {
   render() {
     return (
       <Container style={{backgroundColor:Color.Background}}>
-          <HeaderComponent img={this.state.journos}/>
+          <HeaderComponent img={this.state.journos}  navigation={this.props.navigation}/>
           <Content>
               <Stories data={this.state.stories} />
               <View  style={{borderBottomWidth: 1,borderBottomColor: Color.BackgroundDark, flex:1}}/>
@@ -37,18 +37,7 @@ export default class Subscriptions extends Component {
                 }}>
 
                 <PostVideo item={item}/>
-                { /* <ImageBackground source={{uri:item.thumbnail}} style={{height:260,width:100+'%', justifyContent:'flex-end',alignItems:'flex-end'}}>
-                      <Text style={{backgroundColor:Color.BackgroundDark,opacity:0.9, color:'white',margin:10,paddingHorizontal:5,paddingVertical:2}}>{item.duration}</Text>
-                  </ImageBackground>
-                  <View style={{flexDirection:'row',marginTop:5,width:'100%'}}>
-                    <Image style={{height:50,width:30,borderRadius:25,flex:0.15}} source={{uri:item.channelImg}}/>
-                    <View style={{justifyContent:'flex-start',alignItems:'flex-start',marginLeft:10,flex:0.8}}>
-                      <Text style={{fontWeight:'bold',color:'#a9a9a9'}}>{item.title}</Text>
-                      <Text style={{color:'#525252'}}>{item.channelName} · {item.views}</Text>
-                      <Text style={{color:'#525252'}}>{item.ago}</Text>
-                    </View>
-                    <Ionicons name="md-more" size={30} color='#525252' style={{alignSelf: 'flex-start',flex:0.05}}/>
-              </View>*/}
+                
               </ListItem>
             
               }>
